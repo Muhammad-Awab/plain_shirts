@@ -6,6 +6,7 @@ const Product = require('../models/productModel');
 router.post('/products', async (req, res) => {
     try {
         const product = await Product.create(req.body);
+        console.log(product);
         res.status(201).json(product);
     } catch (error) {
         res.status(400).json({ message: error.message });
