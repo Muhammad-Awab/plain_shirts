@@ -1,6 +1,6 @@
 // CategoryList.js
 import React from 'react';
-import Table from './Table';
+import CategoryTable from './CategoryTable';
 
 const CategoryList = ({ categories, handleEdit, handleDelete, handleAdd }) => {
   const rows = categories.map(category => ({
@@ -15,7 +15,7 @@ const CategoryList = ({ categories, handleEdit, handleDelete, handleAdd }) => {
   return (
     <div>
       <h2>Categories</h2>
-      <Table
+      <CategoryTable
         rows={rows}
         deleteRow={handleDelete}
         editRow={handleEdit}

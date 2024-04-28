@@ -1,6 +1,6 @@
 // ProductList.js
 import React from 'react';
-import Table from './Table';
+import ProductTable from './ProductTable';
 
 const ProductList = ({ products, handleEdit, handleDelete, handleAdd }) => {
   const rows = products.map(product => ({
@@ -15,7 +15,7 @@ const ProductList = ({ products, handleEdit, handleDelete, handleAdd }) => {
   return (
     <div>
       <h2>Products</h2>
-      <Table
+      <ProductTable
         rows={rows}
         deleteRow={handleDelete}
         editRow={handleEdit}
