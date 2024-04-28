@@ -1,36 +1,25 @@
 // ProductList.js
 import React from 'react';
+import Table from './Table';
 
 const ProductList = ({ products, handleEdit, handleDelete, handleAdd }) => {
+  const rows = products.map(product => ({
+    id: product._id,
+    name: product.name,
+    description: product.description,
+    price: product.price,
+    quantity: product.quantity,
+    category: product.category,
+  }));
+
   return (
     <div>
       <h2>Products</h2>
-      <table>
-        <thead>
-          <tr>
-            <th>Name</th>
-            <th>Price</th>
-            <th>Category</th>
-            <th>Edit</th>
-            <th>Delete</th>
-          </tr>
-        </thead>
-        <tbody>
-          {products.map(product => (
-            <tr key={product.id}>
-              <td>{product.name}</td>
-              <td>{product.price}</td>
-              <td>{product.category}</td>
-              <td>
-                <button onClick={() => handleEdit(product.id)}>Edit</button>
-              </td>
-              <td>
-                <button onClick={() => handleDelete(product.id)}>Delete</button>
-              </td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
+      <Table
+        rows={rows}
+        deleteRow={handleDelete}
+        editRow={handleEdit}
+      />
       <button onClick={handleAdd}>Add Product</button>
     </div>
   );
