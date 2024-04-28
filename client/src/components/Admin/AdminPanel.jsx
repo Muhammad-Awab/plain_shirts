@@ -1,6 +1,6 @@
-// In AdminPanel.jsx or wherever you use the Modal component
+// In AdminPanel.jsx
 
-import React, { useState,useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import ProductList from './ProductList';
 import CategoryList from './CategoryList';
@@ -47,27 +47,22 @@ const AdminPanel = () => {
       } else if (type === 'category') {
         setCategories(categories.filter(category => category._id !== id));
       }
-      console.log('Products after deletion:', products);
-      console.log('Categories after deletion:', categories);
     } catch (error) {
       console.error(`Error deleting ${type}:`, error);
     }
   };
-  
-  
-  
+
   const handleEdit = (type, item) => {
+    console.log(`Editing ${type}:`, item);
     setModalType(type);
     setSelectedItem(item);
     setModalOpen(true);
   };
-  
 
   const handleAdd = (type) => {
     setModalType(type);
     setSelectedItem(null);
     setModalOpen(true);
-    setSelectedItem(null);
   };
 
   const closeModal = () => {

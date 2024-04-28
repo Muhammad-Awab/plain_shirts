@@ -24,11 +24,13 @@
   
   .table th,
   .table td {
+    width: 100%;
     padding: 0.8rem;
   }
   
   .table td {
     border-top: 0.5px solid #ddd;
+    text-align: center;
     overflow: hidden;
     text-overflow: ellipsis;
   }

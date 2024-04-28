@@ -12,6 +12,7 @@ const ProductTable = ({ rows, deleteRow, editRow }) => {
             <th>Description</th>
             <th>Price</th>
             <th>Quantity</th>
+            <th>Image Url</th>
             <th>Category</th>
             <th>Edit</th>
             <th>Delete</th>
@@ -24,6 +25,7 @@ const ProductTable = ({ rows, deleteRow, editRow }) => {
               <td>{row.description}</td>
               <td>{row.price}</td>
               <td>{row.quantity}</td>
+              <td>{row.image}</td>
               <td>{row.category}</td>
               <td>
                 <BsFillPencilFill

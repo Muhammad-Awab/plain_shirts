@@ -9,6 +9,7 @@ const ProductList = ({ products, handleEdit, handleDelete, handleAdd }) => {
     description: product.description,
     price: product.price,
     quantity: product.quantity,
+    image: product.image,
     category: product.category,
   }));
 

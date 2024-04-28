@@ -1,70 +1,74 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+import './Modal.css';
 
-import "./Modal.css";
+export const Modal = ({ isOpen, closeModal, onSubmit, defaultValue, fields, modalType }) => {
+  const [formData, setFormData] = useState(defaultValue || {});
 
-export const Modal = ({ isOpen, closeModal, onSubmit, defaultValue, fields }) => {
-  const [formState, setFormState] = useState(
-    defaultValue || {}
-  );
-  const [errors, setErrors] = useState("");
-
-  const validateForm = () => {
-    const requiredFields = fields.filter(field => field.required);
-    const missingFields = requiredFields.filter(field => !formState[field.name]);
-    if (missingFields.length === 0) {
-      setErrors("");
-      return true;
-    } else {
-      setErrors(`Please include: ${missingFields.map(field => field.label).join(", ")}`);
-      return false;
-    }
-  };
+  useEffect(() => {
+    setFormData(defaultValue || {});
+  }, [defaultValue]);
 
   const handleChange = (e) => {
-    setFormState({ ...formState, [e.target.name]: e.target.value });
+    const { name, value } = e.target;
+    setFormData((prevFormData) => ({
+      ...prevFormData,
+      [name]: value,
+    }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (!validateForm()) return;
+    try {
+      if (modalType === 'product') {
+        if (formData._id) {
+          await axios.put(`/api/products/${formData._id}`, formData);
+        } else {
+          await axios.post('/api/products', formData);
+        }
+      } else if (modalType === 'category') {
+        if (formData._id) {
+          await axios.put(`/api/categories/${formData._id}`, formData);
+        } else {
+          await axios.post('/api/categories', formData);
+        }
+      }
 
-    onSubmit(formState);
-
-    closeModal();
+      onSubmit(formData);
+      closeModal();
+    } catch (error) {
+      console.error('Error submitting form:', error);
+    }
   };
 
   return (
     isOpen && (
-      <div
-        className="modal-container"
-        onClick={(e) => {
-          if (e.target.className === "modal-container") closeModal();
-        }}
-      >
-        <div className="modal">
+      <div className="modal-container" onClick={closeModal}>
+        <div className="modal" onClick={(e) => e.stopPropagation()}>
           <form onSubmit={handleSubmit}>
-            {fields.map(field => (
-              <div className="form-group" key={field.name}>
+            {fields.map((field, idx) => (
+              <div className="form-group" key={idx}>
                 <label htmlFor={field.name}>{field.label}</label>
                 {field.type === 'textarea' ? (
                   <textarea
                     name={field.name}
+                    value={formData[field.name] || ''}
                     onChange={handleChange}
-                    value={formState[field.name] || ''}
+                    required={field.required || false}
                   />
                 ) : (
                   <input
                     type={field.type || 'text'}
                     name={field.name}
+                    value={formData[field.name] || ''}
                     onChange={handleChange}
-                    value={formState[field.name] || ''}
+                    required={field.required || false}
                   />
                 )}
               </div>
             ))}
-            {errors && <div className="error">{errors}</div>}
-            <button type="submit" className="btn">Submit</button>
+            <button type="submit">Submit</button>
           </form>
         </div>
       </div>
