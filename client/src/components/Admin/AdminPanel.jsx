@@ -1,10 +1,12 @@
-// In AdminPanel.jsx
+// AdminPanel.jsx
 
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import ProductList from './ProductList';
 import CategoryList from './CategoryList';
 import { Modal } from './Modal';
+import Sidebar from './Sidebar'; // Import the Sidebar component
+import './Sidebar.css'
 
 const AdminPanel = () => {
   const [products, setProducts] = useState([]);
@@ -12,6 +14,7 @@ const AdminPanel = () => {
   const [isModalOpen, setModalOpen] = useState(false);
   const [modalType, setModalType] = useState('');
   const [selectedItem, setSelectedItem] = useState(null);
+  const [activeSection, setActiveSection] = useState(''); // State for active section
 
   // Configure Axios baseURL
   axios.defaults.baseURL = 'http://localhost:8080';
@@ -107,20 +110,25 @@ const AdminPanel = () => {
   ];
 
   return (
-    <div>
+    <div className="main-content">
       <h1>Admin Panel</h1>
-      <ProductList
-        products={products}
-        handleEdit={(product) => handleEdit('product', product)}
-        handleDelete={(productId) => handleDelete('product', productId)}
-        handleAdd={() => handleAdd('product')}
-      />
-      <CategoryList
-        categories={categories}
-        handleEdit={(category) => handleEdit('category', category)}
-        handleDelete={(categoryId) => handleDelete('category', categoryId)}
-        handleAdd={() => handleAdd('category')}
-      />
+      <Sidebar setActiveSection={setActiveSection} />
+      {activeSection === 'products' && (
+        <ProductList
+          products={products}
+          handleEdit={(product) => handleEdit('product', product)}
+          handleDelete={(productId) => handleDelete('product', productId)}
+          handleAdd={() => handleAdd('product')}
+        />
+      )}
+      {activeSection === 'categories' && (
+        <CategoryList
+          categories={categories}
+          handleEdit={(category) => handleEdit('category', category)}
+          handleDelete={(categoryId) => handleDelete('category', categoryId)}
+          handleAdd={() => handleAdd('category')}
+        />
+      )}
       <Modal
         isOpen={isModalOpen}
         closeModal={closeModal}
