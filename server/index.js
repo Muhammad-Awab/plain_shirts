@@ -8,6 +8,8 @@ const authRoutes = require("./routes/auth");
 // Import product controller
 const productController = require("./controllers/productController");
 const categoryController = require("./controllers/categoryController");
+const upload = require("./fileUploadMiddleware");
+
 // database connection
 connection();
 
@@ -19,7 +21,7 @@ app.use(cors());
 app.use("/api/users", userRoutes);
 app.use("/api/auth", authRoutes);
 // Product routes
-app.post("/api/products", productController.createProduct);
+app.post("/api/products", upload.single('image'), productController.createProduct);
 app.get("/api/products", productController.getAllProducts);
 app.get("/api/products/:id", productController.getProductById);
 app.put("/api/products/:id", productController.updateProduct);
