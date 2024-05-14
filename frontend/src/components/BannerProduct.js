@@ -4,7 +4,7 @@ import image2 from '../assest/banner/img2.webp'
 import image3 from '../assest/banner/img3.jpg'
 import image4 from '../assest/banner/img4.jpg'
 import image5 from '../assest/banner/img5.webp'
-
+import image6 from '../assest/banner/main-banner.jpg'
 
 import image1Mobile from '../assest/banner/img1_mobile.jpg'
 import image2Mobile from '../assest/banner/img2_mobile.webp'
@@ -20,11 +20,7 @@ const BannerProduct = () => {
     const [currentImage,setCurrentImage] = useState(0)
 
     const desktopImages = [
-        image1,
-        image2,
-        image3,
-        image4,
-        image5
+        image6
     ]
 
     const mobileImages = [
