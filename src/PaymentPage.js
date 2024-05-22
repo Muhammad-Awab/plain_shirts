@@ -15,9 +15,8 @@ const PaymentPage = () => {
   const [submitted, setSubmitted] = useState(false);
   const [isIFrameVisible, setIsIFrameVisible] = useState(false);
   const [iframeSourceUrl, setIframeSourceUrl] = useState('');
-
   const apiKey = 'YOUR_API_KEY';
-  const integrationId = 'YOUR_INTEGRATION_ID';
+  const integrationId = 'YOUR_INTEGRATION_id';
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.id]: e.target.value });
