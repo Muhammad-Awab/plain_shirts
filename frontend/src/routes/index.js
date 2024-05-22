@@ -12,6 +12,9 @@ import ProductDetails from '../pages/ProductDetails'
 import Cart from '../pages/Cart'
 import SearchProduct from '../pages/SearchProduct'
 import TrackOrder from '../pages/TrackOrder'
+import PaymentPage from '../pages/PaymentPage'
+import 'bootstrap/dist/css/bootstrap.min.css';
+
 
 const router = createBrowserRouter([
     {
@@ -45,6 +48,10 @@ const router = createBrowserRouter([
             {
                 path : 'cart',
                 element : <Cart/>
+            },
+            {
+                path : 'payment',
+                element : <PaymentPage/>
             },
             {
                 path : "search",
