@@ -41,7 +41,14 @@ function TrackOrder() {
   }, []);
 
   return isLoaded ? (
- 
+    <GoogleMap
+      mapContainerStyle={containerStyle}
+      center={center}
+      zoom={12}
+    >
+      <Marker position={center} />
+      {directionResponse && <DirectionsRenderer directions={directionResponse} />}
+    </GoogleMap>
   ) : <h3 style={{ textAlign: 'center' }}>Loading Map...</h3>;
 }
 
