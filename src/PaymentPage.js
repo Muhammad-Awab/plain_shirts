@@ -15,8 +15,8 @@ const PaymentPage = () => {
   const [submitted, setSubmitted] = useState(false);
   const [isIFrameVisible, setIsIFrameVisible] = useState(false);
   const [iframeSourceUrl, setIframeSourceUrl] = useState('');
-  const apiKey = 'YOUR_API_KEY';
-  const integrationId = 'YOUR_INTEGRATION_id';
+  const apiKey = 'ZXlKaGJHY2lPaUpJVXpVeE1pSXNJblI1Y0NJNklrcFhWQ0o5LmV5SmpiR0Z6Y3lJNklrMWxjbU5vWVc1MElpd2ljSEp2Wm1sc1pWOXdheUk2TVRJd016RTFMQ0p1WVcxbElqb2lhVzVwZEdsaGJDSjkuRVhZcDhZeUJKR1YwelFrbzVZM0dfV1lPOG82LUowNkYyYWx1TGFidTFYa2pYaWl4c2E5VThBNFliZEVIdUFiTGdKaVQzaF80QmUyVGZkbThhNHZCd1E=';
+  const integrationId = '135990';
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.id]: e.target.value });
