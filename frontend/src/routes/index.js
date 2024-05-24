@@ -12,8 +12,6 @@ import ProductDetails from '../pages/ProductDetails'
 import Cart from '../pages/Cart'
 import SearchProduct from '../pages/SearchProduct'
 import TrackOrder from '../pages/TrackOrder'
-import PaymentPage from '../pages/PaymentPage'
-
 
 const router = createBrowserRouter([
     {
@@ -47,10 +45,6 @@ const router = createBrowserRouter([
             {
                 path : 'cart',
                 element : <Cart/>
-            },
-            {
-                path : 'payment',
-                element : <PaymentPage/>
             },
             {
                 path : "search",

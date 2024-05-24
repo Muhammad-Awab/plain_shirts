@@ -3,21 +3,14 @@ import SummaryApi from '../common'
 import Context from '../context'
 import displayINRCurrency from '../helpers/displayCurrency'
 import { MdDelete } from "react-icons/md";
-import { useNavigate } from 'react-router-dom';
-
 
 const Cart = () => {
     const [data,setData] = useState([])
     const [loading,setLoading] = useState(false)
     const context = useContext(Context)
     const loadingCart = new Array(4).fill(null)
-    const navigate = useNavigate();
 
 
-    const handlePayment = () => {
-        navigate('/payment'); // Assuming the route to PaymentPage is '/payment'
-    };
-    
     const fetchData = async() =>{
         
         const response = await fetch(SummaryApi.addToCartProductView.url,{
@@ -198,7 +191,7 @@ const Cart = () => {
                                         <p>{displayINRCurrency(totalPrice)}</p>    
                                     </div>
 
-                                    <button className='bg-blue-600 p-2 text-white w-full mt-2' onClick={handlePayment}>Payment</button>
+                                    <button className='bg-blue-600 p-2 text-white w-full mt-2'>Payment</button>
 
                                 </div>
                             )
