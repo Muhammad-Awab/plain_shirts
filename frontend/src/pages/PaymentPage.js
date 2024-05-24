@@ -14,10 +14,10 @@ const PaymentPage = () => {
   const [submitted, setSubmitted] = useState(false);
   const [isIFrameVisible, setIsIFrameVisible] = useState(false);
   const [iframeSourceUrl, setIframeSourceUrl] = useState('');
-  const apiKey = 'YOUR_API_KEY';
-  const integrationId = 'YOUR_INTEGRATION_id';
-//   const apiKey = 'ZXlKaGJHY2lPaUpJVXpVeE1pSXNJblI1Y0NJNklrcFhWQ0o5LmV5SmpiR0Z6Y3lJNklrMWxjbU5vWVc1MElpd2ljSEp2Wm1sc1pWOXdheUk2TVRJd016RTFMQ0p1WVcxbElqb2lhVzVwZEdsaGJDSjkuRVhZcDhZeUJKR1YwelFrbzVZM0dfV1lPOG82LUowNkYyYWx1TGFidTFYa2pYaWl4c2E5VThBNFliZEVIdUFiTGdKaVQzaF80QmUyVGZkbThhNHZCd1E=';
-//   const integrationId = '135990';
+//   const apiKey = 'YOUR_API_KEY';
+//   const integrationId = 'YOUR_INTEGRATION_id';
+  const apiKey = 'ZXlKaGJHY2lPaUpJVXpVeE1pSXNJblI1Y0NJNklrcFhWQ0o5LmV5SmpiR0Z6Y3lJNklrMWxjbU5vWVc1MElpd2ljSEp2Wm1sc1pWOXdheUk2TVRJd016RTFMQ0p1WVcxbElqb2lhVzVwZEdsaGJDSjkuRVhZcDhZeUJKR1YwelFrbzVZM0dfV1lPOG82LUowNkYyYWx1TGFidTFYa2pYaWl4c2E5VThBNFliZEVIdUFiTGdKaVQzaF80QmUyVGZkbThhNHZCd1E=';
+  const integrationId = '135990';
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.id]: e.target.value });
@@ -84,37 +84,86 @@ const PaymentPage = () => {
   };
 
   return (
-    <div className="container" style={{ padding: '2rem' }}>
-      {!submitted ? (
-        <form onSubmit={handleSubmit}>
-          <div className="form-group">
-            <label htmlFor="firstName">First Name:</label>
-            <input type="text" className="form-control" id="firstName" value={formData.firstName} onChange={handleChange} />
-          </div>
-          <div className="form-group">
-            <label htmlFor="lastName">Last Name:</label>
-            <input type="text" className="form-control" id="lastName" value={formData.lastName} onChange={handleChange} />
-          </div>
-          <div className="form-group">
-            <label htmlFor="email">Email:</label>
-            <input type="email" className="form-control" id="email" value={formData.email} onChange={handleChange} />
-          </div>
-          <div className="form-group">
-            <label htmlFor="phoneNumber">Phone Number:</label>
-            <input type="tel" className="form-control" id="phoneNumber" value={formData.phoneNumber} onChange={handleChange} />
-          </div>
-          <div className="form-group">
-            <label htmlFor="amount">Amount:</label>
-            <input type="number" className="form-control" id="amount" value={formData.amount} onChange={handleChange} />
-          </div>
-          <button type="submit" className="btn btn-primary" style={{ marginTop: '2rem' }}>
-            Submit
-          </button>
-        </form>
-      ) : (
-        isIFrameVisible && <iframe src={iframeSourceUrl} style={{ width: '100%', height: '760px' }}></iframe>
-      )}
-    </div>
+    <div className="container mx-auto p-8">
+  {!submitted ? (
+    <form onSubmit={handleSubmit}>
+      <div className="mb-4">
+        <label htmlFor="firstName" className="block text-gray-700 font-bold mb-2">
+          First Name:
+        </label>
+        <input
+          type="text"
+          id="firstName"
+          value={formData.firstName}
+          onChange={handleChange}
+          className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+        />
+      </div>
+      <div className="mb-4">
+        <label htmlFor="lastName" className="block text-gray-700 font-bold mb-2">
+          Last Name:
+        </label>
+        <input
+          type="text"
+          id="lastName"
+          value={formData.lastName}
+          onChange={handleChange}
+          className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+        />
+      </div>
+      <div className="mb-4">
+        <label htmlFor="email" className="block text-gray-700 font-bold mb-2">
+          Email:
+        </label>
+        <input
+          type="email"
+          id="email"
+          value={formData.email}
+          onChange={handleChange}
+          className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+        />
+      </div>
+      <div className="mb-4">
+        <label htmlFor="phoneNumber" className="block text-gray-700 font-bold mb-2">
+          Phone Number:
+        </label>
+        <input
+          type="tel"
+          id="phoneNumber"
+          value={formData.phoneNumber}
+          onChange={handleChange}
+          className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+        />
+      </div>
+      <div className="mb-4">
+        <label htmlFor="amount" className="block text-gray-700 font-bold mb-2">
+          Amount:
+        </label>
+        <input
+          type="number"
+          id="amount"
+          value={formData.amount}
+          onChange={handleChange}
+          className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+        />
+      </div>
+      <button
+        type="submit"
+        className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline mt-4"
+      >
+        Submit
+      </button>
+    </form>
+  ) : (
+    isIFrameVisible && (
+      <iframe
+        src={iframeSourceUrl}
+        className="w-full h-[760px]"
+      ></iframe>
+    )
+  )}
+</div>
+
   );
 };
 

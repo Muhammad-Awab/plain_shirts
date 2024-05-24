@@ -13,7 +13,6 @@ import Cart from '../pages/Cart'
 import SearchProduct from '../pages/SearchProduct'
 import TrackOrder from '../pages/TrackOrder'
 import PaymentPage from '../pages/PaymentPage'
-import 'bootstrap/dist/css/bootstrap.min.css';
 
 
 const router = createBrowserRouter([
