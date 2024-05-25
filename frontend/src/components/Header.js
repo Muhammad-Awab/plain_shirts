@@ -55,11 +55,11 @@ const Header = () => {
   return (
     <header className='h-16 shadow-md bg-white fixed w-full z-40'>
       <div className=' h-full container mx-auto flex items-center px-4 justify-between'>
-            <div className=''>
-                <Link to={"/"}>
-                    <Logo w={90} h={50}/>
-                </Link>
-            </div>
+      <div className=''>
+            <Link to={"/"}>
+                <Logo w={110} h={100} style={{ borderRadius: '50%', overflow: 'hidden' }} />
+            </Link>
+        </div>
 
             <div className='hidden lg:flex items-center w-full justify-between max-w-sm border rounded-full focus-within:shadow pl-2'>
                 <input type='text' placeholder='search product here...' className='w-full outline-none' onChange={handleSearch} value={search}/>
