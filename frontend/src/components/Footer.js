@@ -1,5 +1,6 @@
 import React from 'react'
-
+import Logo from './Logo'
+import { Link } from 'react-router-dom'
 const Footer = () => {
   return (
     // <footer className='bg-slate-200'>
