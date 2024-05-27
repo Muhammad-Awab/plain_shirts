@@ -7,10 +7,10 @@ const router = require('./routes')
 
 
 const app = express()
-app.use(cors({
-    origin : "*",
-    credentials : true
-}))
+
+app.use(
+    cors({credentials: true, origin: true})
+)
 app.use(express.json())
 app.use(cookieParser())
 
