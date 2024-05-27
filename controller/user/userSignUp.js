@@ -3,6 +3,7 @@ const bcrypt = require('bcryptjs');
 
 
 async function userSignUpController(req,res){
+    
     try{
         const { email, password, name} = req.body
 
@@ -40,6 +41,7 @@ async function userSignUpController(req,res){
         const saveUser = await userData.save()
 
         res.status(201).json({
+            
             data : saveUser,
             success : true,
             error : false,
