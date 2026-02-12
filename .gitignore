@@ -2,3 +2,5 @@
 
 /server/node_modules
 /server/.env
+.vscode/
+config.bat
